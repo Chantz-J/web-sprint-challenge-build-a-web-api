@@ -10,6 +10,7 @@ server.use(express.json())
 server.use(morgan('dev'))
 server.use(helmet())
 
+//ENDPOINTS
 server.use('/api/projects', ProjectRouter)
 
 server.get('/', (req, res) => {
