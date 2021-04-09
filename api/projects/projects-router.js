@@ -4,6 +4,7 @@ const router = express.Router()
 
 const Projects = require('./projects-model')
 
+//[GET]
 router.get('/', (req, res) => {
     Projects.get(req.query)
     .then(project => {
@@ -16,3 +17,16 @@ router.get('/', (req, res) => {
         })
     })
 })
+//[GET]
+router.get('/:id', (req, res) => {
+    Projects.get(req.params.id)
+    .then(project => {
+        if(project){
+            res.status(200).json(project)
+        } else {
+            res.status(404).json({message: 'Project not found'})
+        }
+    })
+})
+
+module.exports = router
